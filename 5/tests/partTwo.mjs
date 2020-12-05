@@ -1,15 +1,16 @@
 import {BSP_DATA} from "../data.mjs";
 
+function searchForMySeatId(seats, index) {
+    if (seats[index + 1] !== seats[index] + 1) return seats[index + 1] - 1;
+    return searchForMySeatId(seats, index + 1);
+}
+
 function solve() {
-    //todo(mikol): to be cleaner, this should be a recursive function.
-    return BSP_DATA
-        .map(bsp => bsp.getSeatId())
-        .sort((x, y) => x - y)
-        .reduce((col, id, idx, collection) => {
-            if (col !== null) return col;
-            let next = collection[idx + 1];
-            return next !== id + 1 ? next - 1 : null;
-        }, null)
+    return searchForMySeatId(
+        BSP_DATA
+            .map(bsp => bsp.getSeatId())
+            .sort((x, y) => x - y),
+        0)
 }
 
 console.log(solve())
