@@ -1,4 +1,4 @@
-import {BSP_DATA} from "../data.mjs";
+import {BSP_DATA} from "./data.mjs";
 
 function searchForMySeatId(seats, index) {
     if (seats[index + 1] !== seats[index] + 1) return seats[index + 1] - 1;
