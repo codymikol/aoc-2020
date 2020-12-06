@@ -1,10 +1,15 @@
 const maths = {
     product,
+    sum,
     getMinMax
 }
 
 function product(arr) {
     return arr.slice(1, arr.length).reduce((c, i) => c * i, arr[0])
+}
+
+function sum(arr) {
+    return arr.slice(1, arr.length).reduce((c, i) => c + i, arr[0])
 }
 
 function getMinMax(arr) {
