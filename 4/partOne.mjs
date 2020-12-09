@@ -1,4 +1,4 @@
-import {FIELD_VALIDATORS, PASSPORTS} from "../data.mjs";
+import {FIELD_VALIDATORS, PASSPORTS} from "./data.mjs";
 
 function hasAllRequirements(passport) {
     return Object.keys(FIELD_VALIDATORS).every((passportField) => {
