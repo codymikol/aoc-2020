@@ -1,3 +1,21 @@
+class Bag {
+
+    constructor(bag, contents) {
+        this.name = bag;
+        this.contentNames = contents;
+        this.bags = []
+    }
+
+    add(bag) {
+        this.bags.push(bag);
+    }
+
+    getContentNames() {
+        return bagName.slice(bagName.indexOf(' ') + 1, bagName.length)
+    }
+
+}
+
 export const data = `drab tan bags contain 4 clear gold bags.
 vibrant lime bags contain 3 faded gold bags, 3 plaid aqua bags, 2 clear black bags.
 pale lime bags contain 1 dim salmon bag, 5 faded salmon bags, 1 dim turquoise bag.
@@ -592,3 +610,22 @@ mirrored purple bags contain 5 drab green bags, 2 clear green bags.
 striped plum bags contain 5 dim white bags, 4 dark teal bags.
 dim lavender bags contain 5 striped bronze bags, 3 wavy maroon bags.
 dim chartreuse bags contain 3 shiny gold bags, 2 mirrored olive bags.`
+    .split('\n')
+    .map((row) => {
+        let [bag, contents] = row.split(' contain ')
+
+        bag = bag.replaceAll('bags', 'bag')
+
+        let cleanContents;
+
+        if(contents === 'no other bags.') {
+            cleanContents = [];
+        } else {
+            cleanContents = contents
+                .replaceAll('.', '')
+                .replaceAll('bags', 'bag')
+                .split(', ')
+        }
+
+        return new Bag(bag, cleanContents)
+    })
